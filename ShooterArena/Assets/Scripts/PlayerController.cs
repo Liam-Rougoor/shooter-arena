@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
+    [SerializeField] GameObject reticle;
 
     Animator animator;
     CharacterController characterController;
@@ -29,10 +30,12 @@ public class PlayerController : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
         if (!attacking)
         {
+            reticle.SetActive(false);
             HandleFreeMovement(horizontal, vertical);
         }
         else 
         {
+            reticle.SetActive(true);
             HandleAttackMovement(horizontal, vertical);
         }
         
